@@ -98,10 +98,12 @@ public class GUI implements ActionListener {
     public void createFileMenu()
     {
         itemNew = new JMenuItem("New");
+        // this argument is just the name given for the menu item
         itemNew.addActionListener(this);
         // we can set a string value to trigger the ActionListener on this item
         // here we are using the string "New"
         itemNew.setActionCommand("New");
+        // basically setter function
         menuFile.add(itemNew);
 
         itemOpen = new JMenuItem("Open");
