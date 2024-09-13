@@ -1,6 +1,8 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GUI {
+public class GUI implements ActionListener {
     JFrame window;
     // works like the main windows where component like the lables buttons textfields are added
     // create a GUI
@@ -16,6 +18,8 @@ public class GUI {
     JMenu menuFile,menuEdit,menuFormat,menuColour;
 
     JMenuItem itemNew,itemOpen,itemSave,itemSaveAs,itemExit;
+
+    Function_File file = new Function_File(this);
 
     public static void main(String[] args) {
         new GUI();
@@ -94,9 +98,15 @@ public class GUI {
     public void createFileMenu()
     {
         itemNew = new JMenuItem("New");
+        itemNew.addActionListener(this);
+        // we can set a string value to trigger the ActionListener on this item
+        // here we are using the string "New"
+        itemNew.setActionCommand("New");
         menuFile.add(itemNew);
 
         itemOpen = new JMenuItem("Open");
+        itemOpen.addActionListener(this);
+        itemOpen.setActionCommand("Open");
         menuFile.add(itemOpen);
 
         itemSave = new JMenuItem("Save");
@@ -111,7 +121,22 @@ public class GUI {
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
 
+        switch (command)
+        {
+            case "New" :
+                // we need to call the newFile();
+                file.newFile();
+                break;
 
+            case "Open":
+                file.open();
+                break;
+
+        }
+    }
 }
 
