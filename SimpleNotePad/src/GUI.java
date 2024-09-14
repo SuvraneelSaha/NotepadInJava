@@ -54,8 +54,10 @@ public class GUI implements ActionListener {
         createFormatMenu();
         // for the format
 
+        // this font size and font type will be by default
         format.selectedFont = "Arial";
-        format.createFont(16);
+        format.changeFontType("Arial");
+        format.changeFontSize(16);
         format.wordWrap();
 
        window.setVisible(true);
@@ -255,33 +257,34 @@ public class GUI implements ActionListener {
             case "Word Wrap" :
                 format.wordWrap();
                 break;
+                // new methods
             case "Arial":
-                format.setFont("Arial");
+                format.changeFontType("Arial");
                 break;
             case "Comic Sans MS":
-                format.setFont("Comic Sans MS");
+                format.changeFontType("Comic Sans MS");
                 break;
                 // both the one above and this one are the same
             case "Times New Roman":
-                format.setFont("Times New Roman");
+                format.changeFontType("Times New Roman");
                 break;
             case "size8":
-                format.createFont(8);
+                format.changeFontSize(8);
                 break;
             case "size12":
-                format.createFont(12);
+                format.changeFontSize(12);
                 break;
             case "size16":
-                format.createFont(16);
+                format.changeFontSize(16);
                 break;
             case "size20":
-                format.createFont(20);
+                format.changeFontSize(20);
                 break;
             case "size24":
-                format.createFont(24);
+                format.changeFontSize(24);
                 break;
             case "size28":
-                format.createFont(28);
+                format.changeFontSize(28);
                 break;
 
         }
