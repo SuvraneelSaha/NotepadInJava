@@ -13,13 +13,26 @@ public class GUI implements ActionListener {
     JScrollPane scrollPane;
     // basically acts as a scrollBar ;
 
-    JMenuBar menuBar;
+    boolean wordWrapOn = false;
 
+    JMenuBar menuBar;
+    // menubar is the top menubar
     JMenu menuFile,menuEdit,menuFormat,menuColour;
+    // this are all for the menu items
 
     JMenuItem itemNew,itemOpen,itemSave,itemSaveAs,itemExit;
-
+    // thi are all inside the File item -- ie subitems
+    // File
     Function_File file = new Function_File(this);
+
+    Function_Format format = new Function_Format(this);
+    // thi is for the format
+
+    JMenuItem formatWordWrap;
+    JMenu formatFont , formatFontSize;
+    // these items will be inside the format section
+
+    JMenuItem fontArial,fontCSMS,fontTNRoman, fontSize8,fontSize12,fontSize16,fontSize20,fontSize24,fontSize28;
 
     public static void main(String[] args) {
         new GUI();
@@ -38,6 +51,12 @@ public class GUI implements ActionListener {
 
         createFileMenu();
 
+        createFormatMenu();
+        // for the format
+
+        format.selectedFont = "Arial";
+        format.createFont(16);
+        format.wordWrap();
 
        window.setVisible(true);
        // this is for the visibility
@@ -128,6 +147,87 @@ public class GUI implements ActionListener {
 
     }
 
+    public void createFormatMenu(){
+        // Word Wrap inside the Format Section START
+        formatWordWrap = new JMenuItem("Word Wrap: OFF");
+        formatWordWrap.addActionListener(this);
+        formatWordWrap.setActionCommand("Word Wrap");
+        menuFormat.add(formatWordWrap);
+        // Word Wrap inside the Format section END
+
+        formatFont = new JMenu("Font");
+        // we dont need to add action Listner as it is just a menu ;
+        // not a clickable item
+        menuFormat.add(formatFont);
+
+        // font types sub items START
+        fontArial = new JMenuItem("Arial");
+        fontArial.addActionListener(this);
+        fontArial.setActionCommand("Arial");
+        // adding it to the formatFont menu
+        formatFont.add(fontArial);
+
+        fontCSMS = new JMenuItem("Comic Sans MS");
+        fontCSMS.addActionListener(this);
+        fontCSMS.setActionCommand("Comic Sans MS");
+        //adding it to the formatFont menu
+        formatFont.add(fontCSMS);
+
+        fontTNRoman = new JMenuItem("Times New Roman");
+        fontTNRoman.addActionListener(this);
+        fontTNRoman.setActionCommand("Times New Roman");
+        // adding it to the format Font Menu
+        formatFont.add(fontTNRoman);
+        // font types sub items END
+
+        // Format Size START
+
+        formatFontSize = new JMenu("Font Size");
+        menuFormat.add(formatFontSize);
+
+        fontSize8 = new JMenuItem("8");
+        fontSize8.addActionListener(this);
+        fontSize8.setActionCommand("size8");
+        // adding it to the parent of this item - formatFontSize ;
+        formatFontSize.add(fontSize8);
+
+        fontSize12 = new JMenuItem("12");
+        fontSize12.addActionListener(this);
+        fontSize12.setActionCommand("size12");
+        // adding it to the parent of this item - formatFontSize ;
+        formatFontSize.add(fontSize12);
+
+        fontSize16 = new JMenuItem("16");
+        fontSize16.addActionListener(this);
+        fontSize16.setActionCommand("size16");
+        // adding it to the parent of this item - formatFontSize ;
+        formatFontSize.add(fontSize16);
+
+        fontSize20 = new JMenuItem("20");
+        fontSize20.addActionListener(this);
+        fontSize20.setActionCommand("size20");
+        // adding it to the parent of this item - formatFontSize ;
+        formatFontSize.add(fontSize20);
+
+        fontSize24 = new JMenuItem("24");
+        fontSize24.addActionListener(this);
+        fontSize24.setActionCommand("size24");
+        // adding it to the parent of this item - formatFontSize ;
+        formatFontSize.add(fontSize24);
+
+        fontSize28 = new JMenuItem("28");
+        fontSize28.addActionListener(this);
+        fontSize28.setActionCommand("size28");
+        // adding it to the parent of this item - formatFontSize ;
+        formatFontSize.add(fontSize28);
+
+        // Format Size END
+
+
+
+
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -152,8 +252,37 @@ public class GUI implements ActionListener {
             case "Exit":
                 file.exit();
                 break;
-
-
+            case "Word Wrap" :
+                format.wordWrap();
+                break;
+            case "Arial":
+                format.setFont("Arial");
+                break;
+            case "Comic Sans MS":
+                format.setFont("Comic Sans MS");
+                break;
+                // both the one above and this one are the same
+            case "Times New Roman":
+                format.setFont("Times New Roman");
+                break;
+            case "size8":
+                format.createFont(8);
+                break;
+            case "size12":
+                format.createFont(12);
+                break;
+            case "size16":
+                format.createFont(16);
+                break;
+            case "size20":
+                format.createFont(20);
+                break;
+            case "size24":
+                format.createFont(24);
+                break;
+            case "size28":
+                format.createFont(28);
+                break;
 
         }
     }
