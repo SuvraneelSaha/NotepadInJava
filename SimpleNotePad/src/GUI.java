@@ -53,13 +53,9 @@ public class GUI implements ActionListener {
 
         createFormatMenu();
         // for the format
-
-        // this font size and font type will be by default
-//        format.selectedFont = "Arial";
-//        format.changeFontType("Arial");
-//        format.changeFontSize(16);
-//        format.wordWrap();
-
+        format.selectedFont = "Arial";
+        format.createFont(12);
+        format.wordWrap();
        window.setVisible(true);
        // this is for the visibility
 
@@ -258,34 +254,23 @@ public class GUI implements ActionListener {
                 format.wordWrap();
                 break;
                 // new methods
-            case "Arial":
-                format.changeFontType("Arial");
+            case "Arial"        : format.setFont(command);
                 break;
-            case "Comic Sans MS":
-                format.changeFontType("Comic Sans MS");
+            case "Comic Sans MS": format.setFont(command);
                 break;
-                // both the one above and this one are the same
-            case "Times New Roman":
-                format.changeFontType("Times New Roman");
+            case "Times New Roman": format.setFont(command);
                 break;
-            case "size8":
-                format.changeFontSize(8);
+            case "size8"        : format.createFont(8);
                 break;
-            case "size12":
-                format.changeFontSize(12);
+            case "size12"        : format.createFont(12);
                 break;
-            case "size16":
-                format.changeFontSize(16);
+            case "size16"        : format.createFont(16);
                 break;
-            case "size20":
-                format.changeFontSize(20);
+            case "size20"        : format.createFont(20);
                 break;
-            case "size24":
-                format.changeFontSize(24);
+            case "size24"        : format.createFont(24);
                 break;
-            case "size28":
-                format.changeFontSize(28);
-                break;
+            case "size28"        : format.createFont(28);
 
         }
     }
