@@ -37,15 +37,30 @@ public class Function_Format {
     }
 
     public void createFont(int fontSize){
+        System.out.println("createFont  method ");
+        arial = new Font("FreeSans" , Font.PLAIN , fontSize);
+        comicSansMS = new Font("Monospaced" , Font.PLAIN , fontSize);
+        timesNewRoman = new Font("Noto Serif Georgian" , Font.PLAIN , fontSize);
+        /*
+        the problem lies in the font family ;
+        Ariel , comic Sans ,
+        Time New Roman does not exist as a font family these are like the placeholder in the
+        object initialization ;
 
-        arial = new Font("Arial" , Font.PLAIN , fontSize);
-        comicSansMS = new Font("Comic Sans MS" , Font.PLAIN , fontSize);
-        timesNewRoman = new Font("Times New Roman" , Font.PLAIN , fontSize);
+        so better to use other font families that are currently present in the java awt ;
+
+        also the Java Awt library gets updated from time to time so for which this kinds
+        of redundancy comes ;
+
+         */
+
+
 
         setFont(selectedFont);
     }
 
     public void setFont(String font){
+        System.out.println("setFont method");
         selectedFont = font;
 
         switch (selectedFont) {
@@ -58,5 +73,13 @@ public class Function_Format {
             default:
                 break;
         }
+
+        System.out.println("type of font "+gui.textArea.getFont());
+
+    }
+
+    public void changeFontType(String newFontType)
+    {
+
     }
 }

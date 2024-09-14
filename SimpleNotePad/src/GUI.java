@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -60,7 +61,7 @@ public class GUI implements ActionListener {
        window.setVisible(true);
        // this is for the visibility
 
-
+        checkSystemVar();
 
     }
 
@@ -254,11 +255,11 @@ public class GUI implements ActionListener {
                 format.wordWrap();
                 break;
                 // new methods
-            case "Arial"        : format.setFont(command);
+            case "Arial"        : format.setFont("Arial");
                 break;
-            case "Comic Sans MS": format.setFont(command);
+            case "Comic Sans MS": format.setFont("Comic Sans MS");
                 break;
-            case "Times New Roman": format.setFont(command);
+            case "Times New Roman": format.setFont("Times New Roman");
                 break;
             case "size8"        : format.createFont(8);
                 break;
@@ -274,6 +275,27 @@ public class GUI implements ActionListener {
 
         }
     }
+    public void checkSystemVar()
+    {
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+
+        System.out.println("Getting the font family names");
+
+        // Array of all the fonts available in AWT
+        String fonts[] = ge.getAvailableFontFamilyNames();
+
+        // Getting the font family names
+        for (String i : fonts) {
+            System.out.println(i + " ");
+        }
+    }
 }
 
 
+/*
+
+Spring -- first
+SpringBoot
+
+
+ */
