@@ -55,10 +55,10 @@ public class GUI implements ActionListener {
         // for the format
 
         // this font size and font type will be by default
-        format.selectedFont = "Arial";
-        format.changeFontType("Arial");
-        format.changeFontSize(16);
-        format.wordWrap();
+//        format.selectedFont = "Arial";
+//        format.changeFontType("Arial");
+//        format.changeFontSize(16);
+//        format.wordWrap();
 
        window.setVisible(true);
        // this is for the visibility

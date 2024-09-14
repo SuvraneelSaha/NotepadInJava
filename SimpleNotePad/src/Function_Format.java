@@ -6,7 +6,8 @@ public class Function_Format {
 
     Font arial,comicSansMs,timeNewRoman ;
 
-    String selectedFont;
+    //String selectedFont;
+
     public Function_Format(GUI gui)
     {
         this.gui = gui;
@@ -35,35 +36,35 @@ public class Function_Format {
         }
     }
 
-    public void createFont(int fontSize)
-    {
-        // this method is for changing the font and also the size of that of the font
+//    public void createFont(int fontSize)
+//    {
+//        // this method is for changing the font and also the size of that of the font
+//
+//        //arial = new Font("Arial",Font.PLAIN , fontSize);
+//        //comicSansMs = new Font("Comic Sans MS",Font.PLAIN,fontSize);
+//        //timeNewRoman = new Font("Times New Roman",Font.PLAIN,fontSize);
+//
+//        //setFont(selectedFont);
+//        // khotka place
+//    }
 
-        //arial = new Font("Arial",Font.PLAIN , fontSize);
-        //comicSansMs = new Font("Comic Sans MS",Font.PLAIN,fontSize);
-        //timeNewRoman = new Font("Times New Roman",Font.PLAIN,fontSize);
-
-        //setFont(selectedFont);
-        // khotka place 
-    }
-
-    public void setFont(String font)
-    {
-        selectedFont = font;
-
-        switch (selectedFont) {
-            case "Arial":
-                gui.textArea.setFont(arial);
-                break;
-            case "Comic Sans MS" :
-                gui.textArea.setFont(comicSansMs);
-                break;
-            case "Times New Roman" :
-                gui.textArea.setFont(timeNewRoman);
-                break;
-        }
-
-    }
+//    public void setFont(String font)
+//    {
+//        selectedFont = font;
+//
+//        switch (selectedFont) {
+//            case "Arial":
+//                gui.textArea.setFont(arial);
+//                break;
+//            case "Comic Sans MS" :
+//                gui.textArea.setFont(comicSansMs);
+//                break;
+//            case "Times New Roman" :
+//                gui.textArea.setFont(timeNewRoman);
+//                break;
+//        }
+//
+//    }
 
     public void changeFontSize(int newFontSize)
     {
@@ -79,23 +80,10 @@ public class Function_Format {
         // get the current font from the text area
         Font currentFont = gui.textArea.getFont();
 
-        arial = new Font("Arial",Font.PLAIN , currentFont.getSize());
-        comicSansMs = new Font("Comic Sans MS",Font.PLAIN,currentFont.getSize());
-        timeNewRoman = new Font("Times New Roman",Font.PLAIN,currentFont.getSize());
+        // Create a new Font object with the new font type, same style, and same size
+        Font newFont = new Font(newFontType, currentFont.getStyle(), currentFont.getSize());
 
-        selectedFont = newFontType;
-       switch (selectedFont)
-       {
-           case "Arial":
-               gui.textArea.setFont(arial);
-               break;
-           case "Comic Sans MS" :
-               gui.textArea.setFont(comicSansMs);
-               break;
-           case "Times New Roman" :
-               gui.textArea.setFont(timeNewRoman);
-               break;
-       }
+        gui.textArea.setFont(newFont);
 
     }
 }
