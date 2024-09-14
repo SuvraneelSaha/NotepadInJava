@@ -7,6 +7,7 @@ public class GUI implements ActionListener {
     // works like the main windows where component like the lables buttons textfields are added
     // create a GUI
 
+
     JTextArea textArea ;
     // Multi line area that displays plain text;
 
@@ -58,7 +59,6 @@ public class GUI implements ActionListener {
         format.wordWrap();
        window.setVisible(true);
        // this is for the visibility
-
 
 
 
