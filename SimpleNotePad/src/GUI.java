@@ -32,9 +32,16 @@ public class GUI implements ActionListener {
 
     JMenuItem formatWordWrap;
     JMenu formatFont , formatFontSize;
+    JMenuItem fontArial,fontCSMS,fontTNRoman, fontSize8,fontSize12,fontSize16,fontSize20,fontSize24,fontSize28;
     // these items will be inside the format section
 
-    JMenuItem fontArial,fontCSMS,fontTNRoman, fontSize8,fontSize12,fontSize16,fontSize20,fontSize24,fontSize28;
+    // for the color :
+    JMenuItem iColor1,iColor2,iColor3;
+
+    Function_Color color = new Function_Color(this);
+
+
+
 
     public static void main(String[] args) {
         new GUI();
@@ -54,10 +61,17 @@ public class GUI implements ActionListener {
         createFileMenu();
 
         createFormatMenu();
+        createColourMenu();
         // for the format
         format.selectedFont = "Arial";
         format.createFont(12);
         format.wordWrap();
+
+        // for the default color :
+        // otherwise it will give null pointer error ;
+        color.changeColour("White");
+
+
        window.setVisible(true);
        // this is for the visibility
 
@@ -226,6 +240,26 @@ public class GUI implements ActionListener {
 
 
     }
+    public void createColourMenu()
+    {
+        iColor1 = new JMenuItem("White");
+        // white will be the default color ;
+        iColor1.addActionListener(this);
+        iColor1.setActionCommand("White");
+        menuColour.add(iColor1);
+
+        iColor2 = new JMenuItem("Black");
+        iColor2.addActionListener(this);
+        iColor2.setActionCommand("Black");
+        menuColour.add(iColor2);
+
+
+        iColor3 = new JMenuItem("Blue");
+        iColor3.addActionListener(this);
+        iColor3.setActionCommand("Blue");
+        menuColour.add(iColor3);
+
+    }
 
 
     @Override
@@ -272,7 +306,15 @@ public class GUI implements ActionListener {
             case "size24"        : format.createFont(24);
                 break;
             case "size28"        : format.createFont(28);
-
+            case "White" :
+                color.changeColour(command);
+                break;
+            case "Black":
+                color.changeColour(command);
+                break;
+            case "Blue":
+                color.changeColour(command);
+                break;
         }
     }
     public void checkSystemVar()
